@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Tug of War: Mathematics</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<audio id="win-sound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"></audio>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="header-left">
+            <button class="icon-btn home-btn" title="Home">🏠</button>
+        </div>
+        <h1 class="header-title">TUG OF WAR: MATHEMATICS</h1>
+        <div class="header-right">
+
+        
+            <button class="language-btn">EN ▼</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Panel - Team 1 -->
+        <div class="team-panel team-1">
+            <div class="team-header blue-theme">
+                <h2 class="team-name">👥 TEAM 1</h2>     
+            </div>
+            
+            <div class="question-card">
+                <div class="question-label">Question:</div>
+                <div class="question-text" id="q1">10 + 2 = ?</div>
+            </div>
+
+            <div class="input-display-card">
+                <div class="input-display" id="display-t1"></div>
+            </div>
+
+            <div class="keypad">
+                <button class="key-btn" onclick="num('t1',1)">1</button>
+                <button class="key-btn" onclick="num('t1',2)">2</button>
+                <button class="key-btn" onclick="num('t1',3)">3</button>
+                <button class="key-btn" onclick="num('t1',4)">4</button>
+                <button class="key-btn" onclick="num('t1',5)">5</button>
+                <button class="key-btn" onclick="num('t1',6)">6</button>
+                <button class="key-btn" onclick="num('t1',7)">7</button>
+                <button class="key-btn" onclick="num('t1',8)">8</button>
+                <button class="key-btn" onclick="num('t1',9)">9</button>
+                <button class="key-btn" onclick="num('t1',0)">0</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="clr('t1')">✕ Clear</button>
+                <button class="btn btn-primary" onclick="check('t1')">✓ Submit</button>
+            </div>
+        </div>
+
+        <!-- Center Game Area -->
+        <div class="game-center">
+            <!-- Score Section -->
+            <div class="score-section">
+                <div class="score-box">
+                    <div class="score-label">TEAM 1</div>
+                    <div class="score-value blue-text" id="s1">0</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-label">TIME</div>
+                    <div class="timer-value" id="timer">03:00</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-label">TEAM 2</div>
+                    <div class="score-value red-text" id="s2">0</div>
+                </div>
+            </div>
+
+            <!-- Tug of War Arena -->
+            <div class="tug-arena">
+                <!-- Left Team Characters -->
+                <div class="character-group left-group">
+                    <div class="character" id="char-1-1">
+                        <img src="https://i.ibb.co/Fk2xxFKM/2428b26f-0922-44af-8c1d-f218289827fd.png" alt="Player" class="player-sprite">
+                        <div class="dust-container"></div>
+                    </div>
+                    <div class="character" id="char-1-2">
+                        <img src="https://i.ibb.co/Fk2xxFKM/2428b26f-0922-44af-8c1d-f218289827fd.png" alt="Player" class="player-sprite">
+                        <div class="dust-container"></div>
+                    </div>
+                </div>
+
+                <!-- Rope System -->
+                <div class="rope-system" id="rope-system">
+                    <!-- Center Line -->
+                    <div class="center-divider"></div>
+
+                    <!-- Rope -->
+                    <svg class="rope-svg" viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+                        <path id="rope-path" d="M 0 20 Q 150 15 300 20 Q 450 25 600 20" 
+                              stroke="#8B7355" 
+                              stroke-width="6" 
+                              fill="none" 
+                              stroke-linecap="round"/>
+                    </svg>
+
+                    <!-- Flag -->
+                    <div class="flag-marker">🚩</div>
+
+                    <!-- Hands -->
+                    <div class="hand left-hand" id="left-hand-1"></div>
+                    <div class="hand left-hand" id="left-hand-2"></div>
+                    <div class="hand right-hand" id="right-hand-1"></div>
+                    <div class="hand right-hand" id="right-hand-2"></div>
+                </div>
+
+                <!-- Right Team Characters -->
+                <div class="character-group right-group">
+                    <div class="character" id="char-2-1">
+                        <img src="https://i.ibb.co/Fk2xxFKM/2428b26f-0922-44af-8c1d-f218289827fd.png" alt="Player" class="player-sprite">
+                        <div class="dust-container"></div>
+                    </div>
+                    <div class="character" id="char-2-2">
+                        <img src="https://i.ibb.co/Fk2xxFKM/2428b26f-0922-44af-8c1d-f218289827fd.png" alt="Player" class="player-sprite">
+                        <div class="dust-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Message -->
+            <div class="status-message" id="status-message"></div>
+        </div>
+
+        <!-- Right Panel - Team 2 -->
+        <div class="team-panel team-2">
+            <div class="team-header red-theme">
+                <h2 class="team-name">👥 TEAM 2</h2>
+            </div>
+
+            <div class="question-card">
+                <div class="question-label">Question:</div>
+                <div class="question-text" id="q2">10 + 2 = ?</div>
+            </div>
+
+            <div class="input-display-card">
+                <div class="input-display" id="display-t2"></div>
+            </div>
+
+            <div class="keypad">
+                <button class="key-btn" onclick="num('t2',1)">1</button>
+                <button class="key-btn" onclick="num('t2',2)">2</button>
+                <button class="key-btn" onclick="num('t2',3)">3</button>
+                <button class="key-btn" onclick="num('t2',4)">4</button>
+                <button class="key-btn" onclick="num('t2',5)">5</button>
+                <button class="key-btn" onclick="num('t2',6)">6</button>
+                <button class="key-btn" onclick="num('t2',7)">7</button>
+                <button class="key-btn" onclick="num('t2',8)">8</button>
+                <button class="key-btn" onclick="num('t2',9)">9</button>
+                <button class="key-btn" onclick="num('t2',0)">0</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="clr('t2')">✕ Clear</button>
+                <button class="btn btn-primary" onclick="check('t2')">✓ Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Win Screen -->
+    <div class="win-screen" id="win-screen">
+        <div class="win-modal">
+            <div class="win-title" id="winner-announcement"></div>
+            <div class="winner-characters" id="winner-characters"></div>
+            <button class="btn btn-primary large" onclick="playAgain()">Play Again</button>
+        </div>
+    </div>
+ 
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
