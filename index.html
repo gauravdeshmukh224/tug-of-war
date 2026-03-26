@@ -6,8 +6,10 @@
     <title>Tug of War: Mathematics</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
+    <audio id="correct-sound" src="https://assets.mixkit.co/active_storage/sfx/2018/2018-preview.mp3"></audio>
+<audio id="wrong-sound" src="https://assets.mixkit.co/active_storage/sfx/2020/2020-preview.mp3"></audio>
 <audio id="win-sound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"></audio>
+</head>
 <body>
     <!-- Top Header -->
     <header class="top-header">
@@ -17,9 +19,14 @@
         <h1 class="header-title">TUG OF WAR: MATHEMATICS</h1>
         <div class="header-right">
 
+
+            <div class="theme-switcher">
+  <button class="theme-btn active" data-theme="day">🌞</button>
+  <button class="theme-btn" data-theme="night">🌙</button>
+  <button class="theme-btn" data-theme="neon">⚡</button>
+</div>
+
         
-            <button class="language-btn">EN ▼</button>
-        </div>
     </header>
 
     <!-- Main Container -->
@@ -167,13 +174,25 @@
     </div>
 
     <!-- Win Screen -->
-    <div class="win-screen" id="win-screen">
-        <div class="win-modal">
-            <div class="win-title" id="winner-announcement"></div>
-            <div class="winner-characters" id="winner-characters"></div>
-            <button class="btn btn-primary large" onclick="playAgain()">Play Again</button>
-        </div>
-    </div>
+<div id="win-screen" class="win-screen">
+  <div class="win-card">
+
+    <button class="close-btn" onclick="playAgain()">✖</button>
+
+    <div class="stars">⭐ ⭐ ⭐</div>
+
+    <div class="banner">GAME OVER</div>
+
+    <div class="trophy"><img src="trophy.png" width="250px" alt="Italian Trulli"></div>
+
+    <div class="score-label">YOUR SCORE</div>
+
+    <div class="score-box" id="final-score">0</div>
+
+    <button class="play-btn" onclick="playAgain()">🔄 PLAY AGAIN</button>
+
+  </div>
+</div>
  
 
     <!-- Confetti Container -->
